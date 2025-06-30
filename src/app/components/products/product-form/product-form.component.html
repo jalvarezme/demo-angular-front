@@ -1,1 +1,85 @@
-<p>product-form works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p>{{title}}</p>
+    </div>
+
+    <div class="col-6">
+      <input #id="ngModel" type="text" class="form-control" id="id" name="id" 
+        placeholder="Product id"
+        [(ngModel)]="toUpdateProduct.id" 
+        [ngClass]="{ 
+          'is-invalid': id.invalid && id.touched,
+          'is-valid': id.valid && id.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <input #name="ngModel" type="text" class="form-control" id="name" name="name" 
+        placeholder="Product name"
+        [(ngModel)]="toUpdateProduct.name" 
+        [ngClass]="{ 
+          'is-invalid': name.invalid && name.touched,
+          'is-valid': name.valid && name.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <input #description="ngModel" type="text" class="form-control" id="description" name="description" 
+        placeholder="Product description"
+        [(ngModel)]="toUpdateProduct.description" 
+        [ngClass]="{ 
+          'is-invalid': description.invalid && description.touched,
+          'is-valid': description.valid && description.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <input #categoryID="ngModel" type="text" class="form-control" id="categoryID" name="categoryID" 
+        placeholder="Product categoryID"
+        [(ngModel)]="toUpdateProduct.categoryID" 
+        [ngClass]="{ 
+          'is-invalid': categoryID.invalid && categoryID.touched,
+          'is-valid': categoryID.valid && categoryID.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <input #price="ngModel" type="text" class="form-control" id="price" name="price" 
+        placeholder="Product price"
+        [(ngModel)]="toUpdateProduct.price" 
+        [ngClass]="{ 
+          'is-invalid': price.invalid && price.touched,
+          'is-valid': price.valid && price.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <input #quantity="ngModel" type="text" class="form-control" id="quantity" name="quantity" 
+        placeholder="Product quantity"
+        [(ngModel)]="toUpdateProduct.quantity" 
+        [ngClass]="{ 
+          'is-invalid': quantity.invalid && quantity.touched,
+          'is-valid': quantity.valid && quantity.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6 mt-3">
+      <button
+        type="button"
+        (click)="addEdit()"
+        class="btn btn-primary d-flex align-items-center">
+        <i class="fa-solid fa-pencil white me-2"></i>
+        <p class="mb-0"> {{title}} </p>
+      </button>
+    </div>
+  </div>
+</div>
+

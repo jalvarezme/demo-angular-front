@@ -12,11 +12,11 @@
         (callDeleteAction)="userService.delete($event)"
         [users]="userService.users$()"
       />
-      @if(userService.users$().length) {
+      <!-- @if(userService.users$().length) {
         <app-pagination
           [service]="userService"
         />
-      }
+      } -->
     </div>
   </div>
 } @loading (minimum 1.5s){

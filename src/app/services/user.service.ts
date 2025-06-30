@@ -23,9 +23,10 @@ export class UserService extends BaseService<IUser> {
   getAll() {
     this.findAllWithParams({ page: this.search.page, size: this.search.size}).subscribe({
       next: (response: any) => {
-        this.search = {...this.search, ...response.meta};
+        console.log('Users fetched successfully:', response);
+        this.search = {...this.search, ...response};
         this.totalItems = Array.from({length: this.search.totalPages ? this.search.totalPages: 0}, (_, i) => i+1);
-        this.userListSignal.set(response.data);
+        this.userListSignal.set(response);
       },
       error: (err: any) => {
         console.error('error', err);

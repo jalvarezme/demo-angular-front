@@ -1,0 +1,43 @@
+<h2>Category Page</h2>
+<p>This is the base Category page.</p>
+
+
+@defer {
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of categoryService.items$(); track $index) {
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td><button (click)="onDeleteCategory(item.id)">Eliminar</button></td>
+
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+} @loading (after 100ms; minimum 1s) {
+<app-loader />
+}
+
+@if (areActionsAvailable) {
+<app-modal size="lg" #formModal>
+  <app-category-form (callParentEvent)="onFormEventCalled($event)" [title]="'Add Category'"></app-category-form>
+</app-modal>
+
+<app-modal size="lg" #formModal>
+  <app-category-form (callParentEvent)="onFormEventCalled($event)" [title]="'Edit Category'"></app-category-form>
+</app-modal>
+
+}

@@ -38,7 +38,11 @@ export class UsersComponent {
 
   constructor() {
     this.userService.search.page = 1;
+  }
+
+  ngOnInit(): void {
     this.userService.getAll();
+        console.log(this.userService.getAll());
   }
 
   saveUser(user: IUser) {

@@ -1,0 +1,44 @@
+<h2>Product Page</h2>
+<p>This is the base Product page.</p>
+
+
+@defer {
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of productService.items$(); track $index) {
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.category.name}}</td>
+        <td><button (click)="onDeleteProduct(item.id)">Eliminar</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+} @loading (after 100ms; minimum 1s) {
+<app-loader />
+}
+
+@if (areActionsAvailable) {
+<app-modal size="lg" #formModal>
+  <app-product-form (callParentEvent)="onFormEventCalled($event)" [title]="'Add Product'"></app-product-form>
+</app-modal>
+
+<app-modal size="lg" #formModal>
+  <app-product-form (callParentEvent)="onFormEventCalled($event)" [title]="'Edit Product'"></app-product-form>
+</app-modal>
+}
